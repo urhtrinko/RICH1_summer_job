@@ -11,7 +11,7 @@ c1.GetFrame().SetBorderSize( 5 )
 c1.SetFixedAspectRatio()
 c1.Range(-10, -10, 10, 10)# (xmin,ymin,xmax,ymax)
 
-f = TFile("root_files/r0002.root", "READ")
+f = TFile("root_files/r0001.root", "READ")
 t = f.Get("t;1")
 
 nEntries = t.GetEntries()

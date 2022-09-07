@@ -44,6 +44,6 @@
 
 # OUTPUT
 # saving data to a ROOT
-#/analysis/setFileName root_files/r0002.root
+#/analysis/setFileName root_files/r0001.root
 
 /run/beamOn 10
