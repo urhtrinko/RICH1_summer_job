@@ -57,5 +57,5 @@ def fill_angles_histogram(root_file, n_bins, start = 0, end = 0, phi = 45): # sp
     return [h_angle.GetMean(), h_angle.GetStdDev()]
 
 
-print(fill_angles_histogram('r0001.root', 14, 25.0, 32.0))
+# print(fill_angles_histogram('r0001.root', 14, 25.0, 32.0))
 

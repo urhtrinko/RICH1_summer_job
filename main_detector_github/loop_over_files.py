@@ -23,7 +23,7 @@ def replacetext(filename, search_list, replace_list):
   
         f.truncate()
 
-        input("Everything okay? Press ENTER")
+        # input("Everything okay? Press ENTER")
 
 # def times(string):
 #     new_string = ''

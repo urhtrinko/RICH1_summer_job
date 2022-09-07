@@ -105,7 +105,7 @@ def change_PMTandPlane(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, 
 
 # Positon of the spherical mirrors <tilt of lower mirror> <tilt of uper mirror> <optional z position,
 # default z is 100>
-change_Mirror1(16, 16)
+# change_Mirror1(20, 20)
 
 # Positon of the flat mirrors <tilt of lower mirror> <tilt of uper mirror> <optional y position,
 # default z is 650> <optional z position, default is 200>
