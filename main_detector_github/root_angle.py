@@ -18,7 +18,8 @@ nEntries = t.GetEntries()
 
 # h3 = TH1F("Radiuses for different aerogel positions", "r", 60, 34.75, 65.25)
 # h_yz = TF2("Side view", "yy:zz", -1000, 1000, -5000, 5000)
-h_angle = TH1F("Angualr distribution of beams", "Angels in degrees", 100, 0, 90)
+h_angle = TH1F("Angualr distribution of beams", "Angels in degrees", 20, 0, 0) # A column on a quarter
+                                                                               # of a degreee.
 
 phi = 45
 
@@ -38,11 +39,9 @@ for i in range(0, nEntries):
                     if (len(point1) != 0 and len(point2) != 0):
                         angle = angle_BeamPlane(point1, point2, phi, "down")
                         h_angle.Fill(angle)
-                        ANGLES.append(angle)
 h_angle.Draw('colz')
 c1.Update()
 
 input('Press enter to continue.')
 
-print(ANGLES)
-print(len(ANGLES))
+
