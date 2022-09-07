@@ -1,0 +1,9 @@
+// construction of the material
+:MIXT_BY_NATOMS SiO2MirrorQuartz 2.200*g/cm3 2 Si 1 O 2
+
+// optical propreties of material
+//:prop // add later 
+//    photon_energies
+//    ABSLENGTH
+    
+

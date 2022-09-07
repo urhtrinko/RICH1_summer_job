@@ -1,0 +1,8 @@
+// Place MWPCs in the world, is sensitive volume
+// Density [g/cm^3]
+:MIXT_BY_NATOMS CO2 1.8182E-3 2 C 1 O 2
+:MIXT_BY_VOLUME GasMWPC (41.17/22.4/1000) 2 G4_Ar 0.7 CO2 0.3 
+:VOLU mwpc(S) BOX 25 25 2.5 GasMWPC
+:color mwpc(S) 0. 1. 0.
+//:PLACE mwpc(S) 6 world r000 0 0 280+5
+//:PLACE mwpc(S) 7 world ry180 0 0 -280-5

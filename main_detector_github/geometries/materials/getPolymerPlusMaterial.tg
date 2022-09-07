@@ -1,0 +1,8 @@
+// Construct a material
+:MIXT_BY_NATOMS PolymerPlusMaterialName 1.2*g/cm3 2 C 4 O 4
+
+// optical properties
+//:prop
+//    photon_energies
+//    RINDEX
+//    ABSLENGTH

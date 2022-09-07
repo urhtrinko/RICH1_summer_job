@@ -1,0 +1,7 @@
+// Construction of the material
+:MIXT_BY_NATOMS QuartzRadiator 2.200*g/cm3 2 Si 1 O 2
+// Propreties
+//:prop
+//  photon_energies
+//  RINDEX
+//  ABSLENGTH

@@ -1,0 +1,7 @@
+:surf Air2C4F10 RichTbContainerVesselBox:2 QuartzRadiator:7
+ type dielectric_metal
+ model glisur
+ finish polished
+ property photon_energies 8 1.0*eV 2.0*eV 3.0*eV 4.0*eV 5.0*eV 6.0*eV 7.0*eV 8.0*eV
+          REFLECTIVITY      0.2    0.2   0.2    0.2    0.2    0.2   0.2    0.2 
+          TRANSMITTANCE     0.8    0.8   0.8    0.8    0.8    0.8   0.8    0.8

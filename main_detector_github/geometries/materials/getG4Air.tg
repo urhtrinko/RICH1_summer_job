@@ -1,0 +1,5 @@
+// Air optical settings
+:prop G4_AIR
+ photon_energies 8 1.000*eV 2.000*eV 3.000*eV 4.000*eV 5.000*eV 6.000*eV 7.000*eV 8.000*eV
+ //photon_energies 2 6*eV 6.5*eV
+ RINDEX 1.00028 1.00028 1.00028 1.00029 1.00030 1.00032 1.00034 1.00035
