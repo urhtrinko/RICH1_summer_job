@@ -1,5 +1,5 @@
 # geometry must be specified before /run/initialize
-/geometry/source geometry/main_detector3.tg
+/geometry/source geometries/main_detector3.tg
 
 #main_detector test for github!
 

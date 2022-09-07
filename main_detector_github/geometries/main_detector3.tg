@@ -123,46 +123,38 @@
 //:vis plane1 OFF
 //:vis plane2 OFF
 
-// Add two MWPCs, N=6,7
-//#include geometry/Materials/MWPCs.tg
-
-
-
-// Add the lens, N=8
-// #include LENS.tg
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // ----- OPTICAL PROPERTIES ----- //
 
 // optical properties of Air
-#include geometry/Materials/getG4Air.tg
+#include geometries/materials/getG4Air.tg
 
 // optical properties of Aerogel
-#include geometry/Materials/M_AEROGEL_1.03_rayleigh.tg
+#include geometries/materials/M_AEROGEL_1.03_rayleigh.tg
 
 // optical properties of PMT window
-#include geometry/Materials/G4_SILICON_DIOXIDE.tg
+#include geometries/materials/G4_SILICON_DIOXIDE.tg
 
 // optical properties of C4F10
-#include geometry/Materials/getC4F10.tg
+#include geometries/materials/getC4F10.tg
 
 // optical properties of vacuum
-#include geometry/Materials/getVacuum.tg
+#include geometries/materials/getVacuum.tg
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // ----- Optical properties of surfaces ----- //
 
 // SURFACE PROPERTIES, used for reflection on the mirror
-#include  geometry/Materials/SURFACE_mirrors.tg
+#include  geometries/materials/SURFACE_mirrors.tg
 
 // Surface properties of PMT
-//#include geometry/Materials/pmtWindowSurface.tg
+//#include geometries/materials/pmtWindowSurface.tg
 
 // Optical properties of the surface between Air an C4F10
-//#include geometry/Materials/surfaceAir2C4F10.tg
+//#include geometries/materials/surfaceAir2C4F10.tg
 
 // Optical properties of the surface between C4F10 and aerogel
-//#include geometry/Materials/surfaceC4F102Aerogel.tg
+//#include geometries/materials/surfaceC4F102Aerogel.tg
 
 // Surface properties between vacuum_air
 //#include vacuum_air.tg
