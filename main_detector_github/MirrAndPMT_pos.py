@@ -105,11 +105,11 @@ def change_PMTandPlane(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, 
 
 # Positon of the spherical mirrors <tilt of lower mirror> <tilt of uper mirror> <optional z position,
 # default z is 100>
-change_Mirror1(20, 20)
+change_Mirror1(16, 16)
 
 # Positon of the flat mirrors <tilt of lower mirror> <tilt of uper mirror> <optional y position,
 # default z is 650> <optional z position, default is 200>
-change_MirrorBOX(10, 10)
+# change_MirrorBOX(10, 10)
 
 # Position of the PMT detectors with the detector planes <tilt of the upper detector> <tilt of the lower 
 # detector> <optional y position, default y = 1600> <optional z position, default z = 200>

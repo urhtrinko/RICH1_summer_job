@@ -4,8 +4,8 @@
 
 //rotational matrix <name> <rotation around x,y,z>
 :rotm r000 0 0 0
-:rotm rX00_3a 20 0.0 0.0 // written in DEGREES
-:rotm rX00_3b -20 0.0 0.0 //written in DEGREES
+:rotm rX00_3a 16 0.0 0.0 // written in DEGREES
+:rotm rX00_3b -16 0.0 0.0 //written in DEGREES
 :rotm rXYZ 0 0 0 // What is rXYZ (r000 is only a placeholder)
 :rotm r0YZ 0 -1.5707963267948966*rad -0.15119109897972616*rad 
 :rotm rX00_5 -5.0 90.0 0.0 // written in DEGREES, DON'T CHANGE last two parameters
@@ -42,12 +42,12 @@
 :solid Solid_MirrSphSeg1 SPHERE 1219.2 1221.2 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
 :volu MirrSphSeg1 Solid_MirrSphSeg1 G4_Al
 :color MirrSphSeg1 2.36 0.83 0.14
-:place MirrSphSeg1 3 RichTbContainerVesselBox rX00_3a 0 -511.32526929063783 -1007.8964342323956 // written in MILLIMETERS
+:place MirrSphSeg1 3 RichTbContainerVesselBox rX00_3a 0 -432.79675810802183 -1040.8659019232657 // written in MILLIMETERS
 // Sphere (upper)
 :solid Solid_MirrSphSeg2 SPHERE 1219.2 1221.2 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
 :volu MirrSphSeg2 Solid_MirrSphSeg2 G4_Al
 :color MirrSphSeg2 2.36 0.83 0.14
-:place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 513.1058560563454 -1007.8964342323956 // written in MILLIMETERS
+:place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 434.3038852265337 -1040.8659019232657 // written in MILLIMETERS
 
 
 // Spherical mirror (Mirror2)
@@ -133,7 +133,7 @@
 #include geometries/materials/M_AEROGEL_1.03_rayleigh.tg
 
 // optical properties of PMT window
-#include geometries/materials/G4_SILICON_DIOXIDE.tg
+//#include geometries/materials/G4_SILICON_DIOXIDE.tg
 
 // optical properties of C4F10
 #include geometries/materials/getC4F10.tg
