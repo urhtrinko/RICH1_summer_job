@@ -16,40 +16,54 @@ def different_mirror_positions(phi_start, phi_end, d_phi): #phi_range are the tw
         relative_error.append(distribution/mean)
         distributions.append(distribution)
         phi += d_phi
-    c1 = TCanvas( 'c1', 'Standard deviation for angels of the sph mirror, while flat always at 10', 200, 10, 700, 500 )
     
-    c1.SetFillColor( 42 )
+    c1 = TCanvas( 'c1', 'Standard deviation for angels of the sph mirror, while flat always at 10', 100, 100, 1200, 700)
+    c1.Divide(2, 1)
+
+    c1.SetFillColor( 21 )
     c1.SetGrid()
     
     n = int(len(angles))
 
-    gr = TGraph( n, angles, relative_error )
-    gr.SetLineColor( 2 )
-    gr.SetLineWidth( 4 )
-    gr.SetMarkerColor( 4 )
-    gr.SetMarkerStyle( 21 )
-    gr.SetTitle('Standard deviation for a range of spehrical mirror tilts, while the flat mirror is stationary')
-    gr.GetXaxis().SetTitle('Angles [degrees]')
-    gr.GetYaxis().SetTitle('Standard deviation [degrees]')
-    gr.Draw('AP')
+    c1.cd(1)
+    gr_dist = TGraph( n, angles, distributions)
+    # gr_dist.SetLineColor( 2 )
+    # gr_dist.SetLineWidth( 4 )
+    gr_dist.SetMarkerColor( 4 )
+    gr_dist.SetMarkerStyle( 21 )
+    gr_dist.SetTitle('Standard deviation')
+    gr_dist.GetXaxis().SetTitle('Angles [degrees]')
+    gr_dist.GetYaxis().SetTitle('Standard deviation [degrees]')
+    gr_dist.Draw('AP')
     
+    c1.cd(2)
+    gr_rel = TGraph( n, angles, relative_error)
+    # gr_dist.SetLineColor( 2 )
+    # gr_dist.SetLineWidth( 4 )
+    gr_rel.SetMarkerColor( 4 )
+    gr_rel.SetMarkerStyle( 21 )
+    gr_rel.SetTitle('Relative error')
+    # gr_rel.SetTitleFontSize(10)
+    gr_rel.GetXaxis().SetTitle('Angles [degrees]')
+    gr_rel.GetYaxis().SetTitle('Relative erroe [degrees]')
+    gr_rel.Draw('AP')
+
     # TCanvas.Update() draws the frame, after which one can change it
     c1.Update()
-    c1.GetFrame().SetFillColor(21)
-    c1.GetFrame().SetBorderSize(12)
-    c1.Modified()
-    c1.Update()
+    # c1.GetFrame().SetFillColor(21)
+    # c1.GetFrame().SetBorderSize(12)
+    # c1.Modified()
+    # c1.Update()
 
-    input("Press enter to continue")
-    c1.SaveAs('graphics/distributions_tilt_SphMirr.jpg')
+    # input("Press enter to continue")
+    # c1.SaveAs('graphics/DeviationAndRelativeError.jpg')
 
-    Min = min(list(relative_error))
-    indx = relative_error.index(Min)
-    return [Min, angles[indx]]
+    dit_min = min(list(distributions))
+    rel_min = min(list(relative_error))
+    dit_indx = distributions.index(dit_min)
+    rel_indx = relative_error.index(rel_min)
+    return ["Distribution:", dit_min, angles[dit_indx], "relative_error:", rel_min, angles[rel_indx]]
 
-print(different_mirror_positions(16, 24, 2)) 
+print(different_mirror_positions(16, 24, 0.1)) 
  
 
-# If the graph does not appear, try using the "i" flag, e.g. "python3 -i graph.py"
-# This will access the interactive mode after executing the script, and thereby persist
-# long enough for the graph to appear.
