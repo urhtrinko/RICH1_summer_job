@@ -2,7 +2,7 @@ import ROOT
 from ROOT import TCanvas, TF2, TH1F, TFile, TH2F
 from subsidiary_code import angle_BeamPlane
 
-
+#The maximum tilt of the flat mirror in the default position is 20 \degrees
 
 def fill_angles_histogram(root_file, n_bins, start = 0, end = 0, phi = 45): # specify a root file, range of the,
     f = TFile("root_files/" + root_file, "READ")                    # number of bins and angle of the PMT 

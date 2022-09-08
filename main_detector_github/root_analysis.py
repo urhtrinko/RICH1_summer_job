@@ -51,3 +51,5 @@ c1.Update()
 
 # c1.SaveAs("graphics/PMT_xx_yy.png")
 input('Press ENTER to continue')
+
+print((h1.GetEntries(), h2.GetEntries()))
