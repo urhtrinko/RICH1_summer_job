@@ -40,10 +40,10 @@
 /vis/scene/add/scale
 /vis/scene/add/trajectories
 /vis/scene/endOfEventAction accumulate 1
-/run/beamOn 5
+/run/beamOn 10
 
 # OUTPUT
 # saving data to a ROOT
 /analysis/setFileName root_files/r0001.root
 
-/run/beamOn 2
+/run/beamOn 10

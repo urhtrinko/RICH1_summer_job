@@ -9,8 +9,8 @@
 :rotm rXYZ 0 0 0 // 
 :rotm r0YZ 0 -1.5707963267948966*rad -0.15119109897972616*rad 
 :rotm rX00_5 -5.0 90.0 0.0 // written in DEGREES, DON'T CHANGE last two parameters
-:rotm rX00_5a -20 0.0 0.0 // written in DEGREES
-:rotm rX00_5b 20 0.0 0.0  // written in DEGREES
+:rotm rX00_5a -10 0.0 0.0 // written in DEGREES
+:rotm rX00_5b 10 0.0 0.0  // written in DEGREES
 :rotm rX00_9 -45 0.0 0.0 // written in DEGREES
 :rotm rX00_10 45 0.0 0.0 // written in DEGREES
 
@@ -133,7 +133,7 @@
 #include geometries/materials/M_AEROGEL_1.03_rayleigh.tg
 
 // optical properties of PMT window
-#include geometries/materials/G4_SILICON_DIOXIDE.tg
+//#include geometries/materials/G4_SILICON_DIOXIDE.tg // To have entries on PMT this must be uncommented
 
 // optical properties of C4F10
 #include geometries/materials/getC4F10.tg
