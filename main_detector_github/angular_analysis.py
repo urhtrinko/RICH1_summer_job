@@ -6,24 +6,24 @@ from array import array
 
 def different_mirror_positions(phi_start, phi_end, d_phi): #phi_range are the two border values of the tilt of the other one
     phi = phi_start
-    x, y = array( 'd' ), array( 'd' )
-    means = []
+    angles, distributions = array('d'), array('d')
+    relative_error = array('d')
     while phi <= phi_end:
         change_Mirror1(phi, phi)
         distribution = fill_angles_histogram('r0001.root', 20)[1]
         mean = fill_angles_histogram('r0001.root', 20)[0]
-        x.append(phi)
-        means.append(mean)
-        y.append(distribution)
+        angles.append(phi)
+        relative_error.append(distribution/mean)
+        distributions.append(distribution)
         phi += d_phi
     c1 = TCanvas( 'c1', 'Standard deviation for angels of the sph mirror, while flat always at 10', 200, 10, 700, 500 )
     
     c1.SetFillColor( 42 )
     c1.SetGrid()
     
-    n = int(len(x))
+    n = int(len(angles))
 
-    gr = TGraph( n, x, y )
+    gr = TGraph( n, angles, relative_error )
     gr.SetLineColor( 2 )
     gr.SetLineWidth( 4 )
     gr.SetMarkerColor( 4 )
@@ -43,11 +43,11 @@ def different_mirror_positions(phi_start, phi_end, d_phi): #phi_range are the tw
     input("Press enter to continue")
     c1.SaveAs('graphics/distributions_tilt_SphMirr.jpg')
 
-    Min = min(list(y))
-    indx = y.index(Min)
-    return [Min, x[indx]]
+    Min = min(list(relative_error))
+    indx = relative_error.index(Min)
+    return [Min, angles[indx]]
 
-print(different_mirror_positions(16, 24, 0.25)) 
+print(different_mirror_positions(16, 24, 2)) 
  
 
 # If the graph does not appear, try using the "i" flag, e.g. "python3 -i graph.py"

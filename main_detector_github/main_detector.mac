@@ -32,18 +32,18 @@
 
 #########################
 
-#/vis/open HepRepFile
-#/vis/drawVolume
+/vis/open HepRepFile
+/vis/drawVolume
 
-#/vis/scene/add/axes
-#/vis/scene/add/date
-#/vis/scene/add/scale
-#/vis/scene/add/trajectories
-#/vis/scene/endOfEventAction accumulate 1
-#/run/beamOn 5
+/vis/scene/add/axes
+/vis/scene/add/date
+/vis/scene/add/scale
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate 1
+/run/beamOn 2
 
 # OUTPUT
 # saving data to a ROOT
 /analysis/setFileName root_files/r0001.root
 
-/run/beamOn 5
+/run/beamOn 2
