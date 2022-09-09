@@ -5,7 +5,7 @@ import os
 
 # Python file that changes the tilt of the spherical (mirror 1) and flat (mirror 2) mirrors. The problem
 # occurs when trying to move/rotate them, because you are moving the large sphere of which the mirror is
-# only a part of. In the following code specificlj functions change_Mirror1/change_Mirror2 you specify
+# only a part of. In the following code specificaly functions change_Mirror1/change_Mirror2 you specify
 # the angle at which you want to tilit the Mirror 1 or 2 and the code auromaticaly geneates the
 # position of the center of the sphere so that the mirror always stays at the same position, which can
 # be specified with the parameters z and y, while x is always eaqual to zero.
@@ -78,20 +78,20 @@ def change_MirrorBOX(D_phi, U_phi, y = 650, z = 200):# inputa angle, again for u
     os.system("main_detector.mac")
 
 # Same thing just for PMT(with the  detector planes) boxes.
-def change_PMTandPlane(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, again for uppper and lower position,
+def change_PMT(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, again for uppper and lower position,
     filename = "geometries/main_detector3.tg" # in degrees and position im millimeters
     input_listD = [betweentxt(filename, 'rX00_9', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_9", "//")[0]]
     output_listD = ['rX00_9 ' + str(-D_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_9 0 ' + str(-y) + ' ' + str(z) + ' //']
     input_listU = [betweentxt(filename, 'rX00_10', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_10", "//")[0]]
     output_listU = ['rX00_10 ' + str(U_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_10 0 ' + str(y) + ' ' + str(z) + ' //']
     
-    # Simultanious movement of the agle planes not working yet.
-    dz_D = d * math.sin(D_phi*(math.pi/180))
-    dy_D = d * math.cos(D_phi*(math.pi/180))
-    dz_U = d * math.sin(U_phi*(math.pi/180))
-    dy_U = d * math.cos(U_phi*(math.pi/180))
-    input_list_plane = [betweentxt(filename, '11 RichTbContainerVesselBox rX00_9 0 ', '//')[0], betweentxt(filename, "12 RichTbContainerVesselBox rX00_10 0 ", "//")[0]]
-    output_list_plane = ['11 RichTbContainerVesselBox rX00_9 0 ' + str(-y + dy_D) + ' ' + str(z - dz_D) + ' //', '12 RichTbContainerVesselBox rX00_10 0 ' + str(y - dy_U) + ' ' + str(z - dz_U) + ' //']
+    # # Simultanious movement of the agle planes not working yet.
+    # dz_D = d * math.sin(D_phi*(math.pi/180))
+    # dy_D = d * math.cos(D_phi*(math.pi/180))
+    # dz_U = d * math.sin(U_phi*(math.pi/180))
+    # dy_U = d * math.cos(U_phi*(math.pi/180))
+    # input_list_plane = [betweentxt(filename, '11 RichTbContainerVesselBox rX00_9 0 ', '//')[0], betweentxt(filename, "12 RichTbContainerVesselBox rX00_10 0 ", "//")[0]]
+    # output_list_plane = ['11 RichTbContainerVesselBox rX00_9 0 ' + str(-y + dy_D) + ' ' + str(z - dz_D) + ' //', '12 RichTbContainerVesselBox rX00_10 0 ' + str(y - dy_U) + ' ' + str(z - dz_U) + ' //']
 
     # print(input_list_plane)
     # print(output_list_plane)
@@ -113,6 +113,6 @@ def change_PMTandPlane(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, 
 
 # Position of the PMT detectors with the detector planes <tilt of the upper detector> <tilt of the lower 
 # detector> <optional y position, default y = 1600> <optional z position, default z = 200>
-# change_PMTandPlane(45, 45)
+change_PMT(45, 45)
 
 
