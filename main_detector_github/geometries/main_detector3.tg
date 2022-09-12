@@ -4,15 +4,15 @@
 
 //rotational matrix <name> <rotation around x,y,z>
 :rotm r000 0 0 0
-:rotm rX00_3a 25 0.0 0.0 // written in DEGREES
-:rotm rX00_3b -25 0.0 0.0 //written in DEGREES
+:rotm rX00_3a 10 0.0 0.0 // written in DEGREES
+:rotm rX00_3b -10 0.0 0.0 //written in DEGREES
 :rotm rXYZ 0 0 0 // 
 :rotm r0YZ 0 -1.5707963267948966*rad -0.15119109897972616*rad 
 :rotm rX00_5 -5.0 90.0 0.0 // written in DEGREES, DON'T CHANGE last two parameters
 :rotm rX00_5a -5 0.0 0.0 // written in DEGREES
 :rotm rX00_5b 5 0.0 0.0  // written in DEGREES
-:rotm rX00_9 -75 0.0 0.0 // written in DEGREES
-:rotm rX00_10 75 0.0 0.0 // written in DEGREES
+:rotm rX00_9 -35 0.0 0.0 // written in DEGREES
+:rotm rX00_10 35 0.0 0.0 // written in DEGREES
 
 //Defining materials
 :MIXT_BY_NATOMS C4F10 11.2*kg/m3 2 C 4 F 10
@@ -29,25 +29,26 @@
 :vis DetectorHall OFF
 
 // Container vessel box
-:volu RichTbContainerVesselBox BOX 0.5*2000.0 0.5*4000.0 0.5*1200.0 G4_Galactic //C4F10, for now vacuum
-:color RichTbContainerVesselBox 0.39 1.39 2.07                                  //       so that the
-:place RichTbContainerVesselBox 2 DetectorHall r000 0 0 0                       //       only Cherenkov
-                                                                                //       radiator is the
-// Segmented spherical mirror (Mirror1)                                         //       aerogel.
+
+:volu RichTbContainerVesselBox BOX 0.5*2000.0 0.5*4000.0 0.5*1200.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
+:color RichTbContainerVesselBox 0.39 1.39 2.07
+:place RichTbContainerVesselBox 2 DetectorHall r000 0 0 0
+
+// Segmented spherical mirror (Mirror1)
 // Sphere (lower)
 // Parameters of the Sphere (for 5o)
 // x0 = 0, y0 = -207.16*mm, z0 = -802.48*mm
-// r = 1220.2
+// r = 1220.2, rmax = 1221.2, rmin = 1219.2
 // refer to SegSphMirr_pos.py to CHANGE the position or angle
-:solid Solid_MirrSphSeg1 SPHERE 1219.2 1221.2 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
+:solid Solid_MirrSphSeg1 SPHERE 5000 5002 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
 :volu MirrSphSeg1 Solid_MirrSphSeg1 G4_Al
 :color MirrSphSeg1 2.36 0.83 0.14
-:place MirrSphSeg1 3 RichTbContainerVesselBox rX00_3a 0 -605.9390588806739 -959.1156201863909 // written in MILLIMETERS
+:place MirrSphSeg1 3 RichTbContainerVesselBox rX00_3a 0 -1275.344727253162 -4535.648542508808 // written in MILLIMETERS
 // Sphere (upper)
-:solid Solid_MirrSphSeg2 SPHERE 1219.2 1221.2 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
+:solid Solid_MirrSphSeg2 SPHERE 5000 5002 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
 :volu MirrSphSeg2 Solid_MirrSphSeg2 G4_Al
 :color MirrSphSeg2 2.36 0.83 0.14
-:place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 608.0491190202109 -959.1156201863909 // written in MILLIMETERS
+:place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 1279.7858571550973 -4535.648542508808 // written in MILLIMETERS
 
 
 // Spherical mirror (Mirror2)
@@ -74,54 +75,43 @@
 // Replacement of the flat mirror with a box
 // Box (lower)
 :volu FlatMirror1 BOX 500 500 6 G4_Al
-:place FlatMirror1 5 RichTbContainerVesselBox rX00_5a 0 -650 -200 // scale parameters are in MILLIMETERS
+:place FlatMirror1 5 RichTbContainerVesselBox rX00_5a 0 -800 -400 // scale parameters are in MILLIMETERS
 // Box (upper)
 :volu FlatMirror2 BOX 500 500 6 G4_Al
-:place FlatMirror2 6 RichTbContainerVesselBox rX00_5b 0 650 -200 // scale parameters are in MILLIMETERS
+:place FlatMirror2 6 RichTbContainerVesselBox rX00_5b 0 800 -400 // scale parameters are in MILLIMETERS
 
 // Quartz radiator (Aerogel)
-// define solids
-:solid RichTbQuartzSphA SPHERE 0.0 412.09 0.0*rad 6.283185307179586*rad 0.0*rad 3.141592653589793*rad 
-:solid RichTbQuartzSphB SPHERE 0.0 412.09 0.0*rad 6.283185307179586*rad 0.0*rad 3.141592653589793*rad 
-// intersection of two spheres
-:solid SphInt intersection RichTbQuartzSphA RichTbQuartzSphB r000 0.0 0.0 816.18
-// placement of the created solid
-:volu QuartzRadiator SphInt M_aerogel
+
+:volu QuartzRadiator BOX 100 100 5 M_aerogel
 :color QuartzRadiator 2.55 2.41 0.55
-:place QuartzRadiator 7 RichTbContainerVesselBox r000 0.0 0.0 -650 // original-795.3899999999999
+:place QuartzRadiator 7 RichTbContainerVesselBox r000 0 0 -400 
+
+// define solids original radius: 412.09
+//:solid RichTbQuartzSphA SPHERE 0.0 450 0.0*rad 6.283185307179586*rad 0.0*rad 3.141592653589793*rad 
+//:solid RichTbQuartzSphB SPHERE 0.0 450 0.0*rad 6.283185307179586*rad 0.0*rad 3.141592653589793*rad 
+// intersection of two spheres
+//:solid SphInt intersection RichTbQuartzSphA RichTbQuartzSphB r000 0.0 0.0 816.18
+// placement of the created solid
+//:volu QuartzRadiator SphInt M_aerogel
+//:color QuartzRadiator 2.55 2.41 0.55
+//:place QuartzRadiator 7 RichTbContainerVesselBox r000 0.0 0.0 -650 // original-795.3899999999999
 
 // Vacuum tube
-:volu VacTub TUBE 0 20 10000 G4_Galactic
+:volu VacTub TUBE 0 500 10000 G4_Galactic
 :place VacTub 8 DetectorHall r000 0 0 -10000-600
 :vis VacTub OFF
 
-
-
 // Place PMT window, 1mm thick, it covers +- 84 mm, pitch 30mm, 18mm one pmt
 // Box (lower)
-:volu pmt1 BOX 400*mm 400*mm 0.5*mm G4_SILICON_DIOXIDE
+:volu pmt1 BOX 600*mm 600*mm 0.5*mm G4_SILICON_DIOXIDE
 :color pmt1 0.9 0.9 0.   
 // <<<<<<<<<<<<<< ------------- PMT POSITION ----------------- >>>>>>>>>>>>
-:PLACE pmt1 9 RichTbContainerVesselBox rX00_9 0 -1600 200 // add 0.5mm shift due to window thickness
+:PLACE pmt1 9 RichTbContainerVesselBox rX00_9 0 -1500 200 // add 0.5mm shift due to window thickness
 // Box (upper)
-:volu pmt2 BOX 400*mm 400*mm 0.5*mm G4_SILICON_DIOXIDE
+:volu pmt2 BOX 600*mm 600*mm 0.5*mm G4_SILICON_DIOXIDE
 :color pmt2 0.9 0.9 0.   
 // <<<<<<<<<<<<<< ------------- PMT POSITION ----------------- >>>>>>>>>>>>
-:PLACE pmt2 10 RichTbContainerVesselBox rX00_10 0 1600 200 // add 0.5mm shift due to window thickness
-
-// Plane for analysis (a plane that lays 50 mm in front of the pmt detector and therefore helps with
-// the angular analysis of the beams that fall on the plane)
-// Box (lower)
-//:volu plane1 BOX 400*mm 400*mm 0.5*mm G4_Galactic
-//:color plane1 0 0 0   
-//:PLACE plane1 11 RichTbContainerVesselBox rX00_9 0 -1600+35.36 200-35.36 //
-// Box (upper)
-//:volu plane2 BOX 400*mm 400*mm 0.5*mm G4_Galactic
-//:color plane2 0 0 0   
-//:PLACE plane2 12 RichTbContainerVesselBox rX00_10 0 1600-35.36 200-35.36 //
-// visability of the planes
-//:vis plane1 OFF
-//:vis plane2 OFF
+:PLACE pmt2 10 RichTbContainerVesselBox rX00_10 0 1500 200 // add 0.5mm shift due to window thickness
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // ----- OPTICAL PROPERTIES ----- //

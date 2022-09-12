@@ -11,7 +11,7 @@ c1.GetFrame().SetBorderSize( 5 )
 c1.SetFixedAspectRatio()
 c1.Range(-10, -10, 10, 10)# (xmin,ymin,xmax,ymax)
 
-f = TFile("root_files/r0001.root", "READ")
+f = TFile("root_files/iso_plane_cone.root", "READ")
 t = f.Get("t;1")
 
 nEntries = t.GetEntries()
@@ -23,9 +23,9 @@ hM_U = TH2F("Upper Flat mirror", "xx:yy", 80, -400, 400, 80, -400, 400)
 
 for i in range(0, nEntries):
     a = t.GetEntry(i)
-    print(i, "- n_steps:", t.n)
+    # print(i, "- n_steps:", t.n)
     for j in range(0, t.n):
-        if ((t.vlm[j] == 9)): 
+        if ((t.vlm[j] == 7)): 
             h1.Fill(t.xx[j], t.yy[j])
         if ((t.vlm[j] == 10)):
             h2.Fill(t.xx[j], t.yy[j])
@@ -49,7 +49,7 @@ h2.Draw('colz')
 
 c1.Update()
 
-c1.SaveAs("graphics/PMT_xx_yy_251075.png")
+# c1.SaveAs("graphics/PMT_xx_yy_251075.png")
 input('Press ENTER to continue')
 
 print((h1.GetEntries(), h2.GetEntries()))
