@@ -36,19 +36,18 @@ def z_position_Mirror2(phi, z):
 # rotate it around this point.
 # p.s. The code automaticaly corrects the main_detector3.tg file and runs the main_detector macro.
 
-def change_Mirror1(D_phi, U_phi, z = 100): # inputa angle for lower (D_phi) and upper spherical mirror 
+def change_Mirror1(D_phi1, U_phi1, z1 = 100): # inputa angle for lower (D_phi) and upper spherical mirror 
     filename = "geometries/main_detector3.tg"# (U_phi) in degrees and position in millimeters.
-    new_positionD = position_Mirror1(D_phi, z)
-    new_positionU = position_Mirror1(U_phi, z)
+    new_positionD = position_Mirror1(D_phi1, z1)
+    new_positionU = position_Mirror1(U_phi1, z1)
     input_listD = [betweentxt(filename, 'rX00_3a', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_3a", "//")[0]]
-    output_listD = ['rX00_3a ' + str(D_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_3a 0 ' + str(new_positionD[0]) + ' ' + str(new_positionD[2]) + ' //']
+    output_listD = ['rX00_3a ' + str(D_phi1) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_3a 0 ' + str(new_positionD[0]) + ' ' + str(new_positionD[2]) + ' //']
     input_listU = [betweentxt(filename, 'rX00_3b', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_3b", "//")[0]]
-    output_listU = ['rX00_3b ' + '-' + str(U_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_3b 0 ' + str(new_positionU[1]) + ' ' + str(new_positionU[2]) + ' //']
+    output_listU = ['rX00_3b ' + '-' + str(U_phi1) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_3b 0 ' + str(new_positionU[1]) + ' ' + str(new_positionU[2]) + ' //']
     
     # print(input_listU)
     # print(output_listU)
     replacetext(filename, input_listD + input_listU, output_listD + output_listU)
-    os.system("main_detector.mac")
 
 # Changing the position of Mirror 2
 # The center position of the mirror is constant and you can rotate it around this point.
@@ -62,23 +61,21 @@ def change_Mirror1(D_phi, U_phi, z = 100): # inputa angle for lower (D_phi) and 
 #     # print(input_list)
 #     # print(output_list)
 #     replacetext(filename, input_list, output_list)
-#     os.system("main_detector.mac")
 
 #Changing the posritions of the box which is substitutuing the spherical version of the flat mirror - reflection in visualization is now normal
 
-def change_MirrorBOX(D_phi, U_phi, y = 650, z = 200):# inputa angle, again for uppper and lower position,
+def change_MirrorBOX(D_phi3, U_phi3, y3 = 650, z3 = 200):# inputa angle, again for uppper and lower position,
     filename = "geometries/main_detector3.tg" # in degrees and position im millimeters
     input_listD = [betweentxt(filename, 'rX00_5a', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_5a", "//")[0]]
-    output_listD = ['rX00_5a ' + str(-D_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_5a 0 ' + str(-y) + ' -' + str(z) + ' //']
+    output_listD = ['rX00_5a ' + str(-D_phi3) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_5a 0 ' + str(-y3) + ' -' + str(z3) + ' //']
     input_listU = [betweentxt(filename, 'rX00_5b', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_5b", "//")[0]]
-    output_listU = ['rX00_5b ' + str(U_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_5b 0 ' + str(y) + ' -' + str(z) + ' //']
+    output_listU = ['rX00_5b ' + str(U_phi3) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_5b 0 ' + str(y3) + ' -' + str(z3) + ' //']
     # print(input_listU)
     # print(output_listU)
     replacetext(filename, input_listD + input_listU, output_listD + output_listU)
-    os.system("main_detector.mac")
 
 # Same thing just for PMT(with the  detector planes) boxes.
-def change_PMT(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, again for uppper and lower position,
+def change_PMT(D_phi, U_phi, y = 1600, z = 200):# inputa angle, again for uppper and lower position,
     filename = "geometries/main_detector3.tg" # in degrees and position im millimeters
     input_listD = [betweentxt(filename, 'rX00_9', '0.0')[0], betweentxt(filename, "RichTbContainerVesselBox rX00_9", "//")[0]]
     output_listD = ['rX00_9 ' + str(-D_phi) + ' 0.0 0.0', 'RichTbContainerVesselBox rX00_9 0 ' + str(-y) + ' ' + str(z) + ' //']
@@ -96,23 +93,23 @@ def change_PMT(D_phi, U_phi, y = 1600, z = 200, d = 50):# inputa angle, again fo
     # print(input_list_plane)
     # print(output_list_plane)
     replacetext(filename, input_listD + input_listU, output_listD + output_listU)
-    #replacetext(filename, input_list_plane, output_list_plane)
+    
+
+def run_macro(D_phi1, U_phi1, D_phi3, U_phi3, D_phi, U_phi, z1 = 100, y3 = 650, z3 = 200, y = 1600, z = 200):
+    change_Mirror1(D_phi1, U_phi1, z1 = 100)
+    change_MirrorBOX(D_phi3, U_phi3, y3 = 650, z3 = 200)
+    change_PMT(D_phi, U_phi, y = 1600, z = 200)
     os.system("main_detector.mac")
 
 # PART OF THE CODE WHERE YOU CAN CHANGE THE TILT AND POSITION OF THE MIRRORS AND PMT DETECTORS (p.s.
 # if you don't need to run the command for a certain mirror comment it otherwise the code will run
 # more times than needed)
 
-# Positon of the spherical mirrors <tilt of lower mirror> <tilt of uper mirror> <optional z position,
-# default z is 100>
-# change_Mirror1(20, 20)
+# Positon of the spherical mirrors <tilt of lower sph mirror> <tilt of uper sph mirror> <tilt of flat
+#  lower mirror> <tilt of flat uper mirror> <tilt of the upper PMT detector> <tilt of the lower PMT
+#  detector>, <optional z position, default z is 100> <optional z position, default is 200>, <optional
+#  y position, default y = 1600> <optional z position, default z = 200># change_Mirror1(20, 20) 
+# # Interval Sph [25-20] and Flat [10-5]
 
-# Positon of the flat mirrors <tilt of lower mirror> <tilt of uper mirror> <optional y position,
-# default z is 650> <optional z position, default is 200>
-# change_MirrorBOX(5, 5)
-
-# Position of the PMT detectors with the detector planes <tilt of the upper detector> <tilt of the lower 
-# detector> <optional y position, default y = 1600> <optional z position, default z = 200>
-# change_PMT(75, 75)
-
+# run_macro(25, 25, 5, 5, 75, 75)
 

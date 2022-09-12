@@ -64,6 +64,6 @@ def different_mirror_positions(phi_start, phi_end, d_phi): #phi_range are the tw
     rel_indx = relative_error.index(rel_min)
     return ["Distribution:", dit_min, angles[dit_indx], "relative_error:", rel_min, angles[rel_indx]]
 
-print(different_mirror_positions(16, 24, 0.1)) 
+# print(different_mirror_positions(16, 24, 0.1)) 
  
 

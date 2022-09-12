@@ -17,17 +17,23 @@
 /process/list Electromagnetic
 /process/list Optical
 
-########## BEAM #########
+########## SOURCE OF particleS #########
+
 /gps/particle proton
 /gps/energy 180 GeV
+/gps/pos/centre 0 0 -500 mm
+/gps/ang/type iso
 
-/gps/pos/type Beam
-/gps/pos/shape Circle
-/gps/pos/centre 0.0 0.0 -5. m
-/gps/pos/radius 0. mm
-/gps/pos/sigma_r 5. mm
+#/gps/particle proton
+#/gps/energy 180 GeV
 
-/gps/direction 0 0 1
+#/gps/pos/type Beam
+#/gps/pos/shape Circle
+#/gps/pos/centre 0.0 0.0 -5. m
+#/gps/pos/radius 0. mm
+#/gps/pos/sigma_r 5. mm
+
+#/gps/direction 0 0 1
 
 
 #########################
@@ -35,15 +41,15 @@
 /vis/open HepRepFile
 /vis/drawVolume
 
-#/vis/scene/add/axes
+/vis/scene/add/axes
 /vis/scene/add/date
 /vis/scene/add/scale
 /vis/scene/add/trajectories
 /vis/scene/endOfEventAction accumulate 1
-/run/beamOn 10
+/run/beamOn 100
 
 # OUTPUT
 # saving data to a ROOT
-/analysis/setFileName root_files/r0001.root
+#/analysis/setFileName root_files/r0001.root
 
-/run/beamOn 10
+#/run/beamOn 10

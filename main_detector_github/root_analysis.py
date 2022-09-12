@@ -49,7 +49,7 @@ h2.Draw('colz')
 
 c1.Update()
 
-# c1.SaveAs("graphics/PMT_xx_yy_201075.png")
+c1.SaveAs("graphics/PMT_xx_yy_251075.png")
 input('Press ENTER to continue')
 
 print((h1.GetEntries(), h2.GetEntries()))

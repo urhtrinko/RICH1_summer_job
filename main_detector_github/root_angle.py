@@ -1,6 +1,7 @@
 import ROOT
 from ROOT import TCanvas, TF2, TH1F, TFile, TH2F
 from subsidiary_code import angle_BeamPlane
+from MirrAndPMT_pos import change_PMT
 
 #The maximum tilt of the flat mirror in the default position is 20 \degrees
 
@@ -40,19 +41,19 @@ def fill_angles_histogram(root_file, n_bins, start = 0, end = 0, phi = 45): # sp
                             h_angle.Fill(angle)
 
     # # IF YOU WANT TO DRAW THE HISTOGRAM
-    c1 = TCanvas( 'c1', 'Hits_detector', 100, 100, 900, 550)
-    c1.SetGridx()
-    c1.SetGridy()
-    c1.GetFrame().SetFillColor( 21 )
-    c1.GetFrame().SetBorderMode(-1 )
-    c1.GetFrame().SetBorderSize( 5 )
-    c1.SetFixedAspectRatio()
-    c1.Range(-10, -10, 10, 10)# (xmin,ymin,xmax,ymax)
-    h_angle.Draw('colz')
-    c1.Update()
+    # c1 = TCanvas( 'c1', 'Hits_detector', 100, 100, 900, 550)
+    # c1.SetGridx()
+    # c1.SetGridy()
+    # c1.GetFrame().SetFillColor( 21 )
+    # c1.GetFrame().SetBorderMode(-1 )
+    # c1.GetFrame().SetBorderSize( 5 )
+    # c1.SetFixedAspectRatio()
+    # c1.Range(-10, -10, 10, 10)# (xmin,ymin,xmax,ymax)
+    # h_angle.Draw('colz')
+    # c1.Update()
 
-    input('Press enter to continue.')
-    #c1.SaveAs("graphics/angular_distribution.jpg")
+    # input('Press enter to continue.')
+    # #c1.SaveAs("graphics/angular_distribution.jpg")
 
     return [h_angle.GetMean(), h_angle.GetStdDev()]
 

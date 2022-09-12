@@ -46,5 +46,15 @@ def angle_BeamPlane(point1, point2, phi, position): # position is either a strin
         if result != None:
             return round(result, 3)
 
+def range_list(start, end, delta):
+    x = start
+    result = []
+    while x <= end:
+        result.append(x)
+        x+=delta
+    return result
+
 # print(round(angle_between_vectors([1, 5, 6], [6, 7, 4]), 3))
-print(angle_BeamPlane(point1, point2, phi, down))
+# print(angle_BeamPlane(point1, point2, phi, down))
+
+
