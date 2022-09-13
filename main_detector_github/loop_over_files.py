@@ -109,5 +109,5 @@ def betweenLinesFill(filename, start_text, end_text, replacelines): #replace lin
 # print(re.findall('rXY0_3 6.0\*deg -0.0\*deg', ":rotm rXY0_3 5.0\*deg -0.0\*deg 0.0" + "\n" + 
 # ":rotm rXYZ 0 0 0 // What is rXYZ (r000 is only a placeholder"))
 
-sez = ["/gps/particle proton\n", "/gps/pos/type Beam\n", "/gps/pos/shape Circle\n", "/gps/pos/centre 0.0 0.0 -5. m\n", "/gps/pos/radius 0. mm\n", "/gps/pos/sigma_r 5. mm\n", "/gps/direction 0 0 1"]
-betweenLinesFill("main_detector.mac", "#Start prop", "#End prop", sez)
+# sez = ["/gps/particle proton\n", "/gps/pos/type Beam\n", "/gps/pos/shape Circle\n", "/gps/pos/centre 0.0 0.0 -5. m\n", "/gps/pos/radius 0. mm\n", "/gps/pos/sigma_r 5. mm\n", "/gps/direction 0 0 1"]
+# betweenLinesFill("main_detector.mac", "#Start prop", "#End prop", sez)

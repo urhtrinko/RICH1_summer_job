@@ -20,13 +20,13 @@
 ########## SOURCE OF particleS #########
 
 #Start prop
-#/gps/particle proton
-#/gps/pos/type Beam
-#/gps/pos/shape Circle
-#/gps/pos/centre 0.0 0.0 -5. m
-#/gps/pos/radius 0. mm
-#/gps/pos/sigma_r 5. mm
-#/gps/direction 0 0 1
+/gps/particle proton
+/gps/pos/centre 0 0 -600 mm
+/gps/ang/type iso
+/gps/ang/mintheta -195 deg
+/gps/ang/maxtheta 195 deg
+#
+#
 #End prop
 
 #/gps/particle proton
