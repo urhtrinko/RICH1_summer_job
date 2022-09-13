@@ -4,15 +4,15 @@
 
 //rotational matrix <name> <rotation around x,y,z>
 :rotm r000 0 0 0
-:rotm rX00_3a 10 0.0 0.0 // written in DEGREES
-:rotm rX00_3b -10 0.0 0.0 //written in DEGREES
+:rotm rX00_3a 11 0.0 0.0 // written in DEGREES
+:rotm rX00_3b -11 0.0 0.0 //written in DEGREES
 :rotm rXYZ 0 0 0 // 
 :rotm r0YZ 0 -1.5707963267948966*rad -0.15119109897972616*rad 
 :rotm rX00_5 -5.0 90.0 0.0 // written in DEGREES, DON'T CHANGE last two parameters
-:rotm rX00_5a -5 0.0 0.0 // written in DEGREES
-:rotm rX00_5b 5 0.0 0.0  // written in DEGREES
-:rotm rX00_9 -35 0.0 0.0 // written in DEGREES
-:rotm rX00_10 35 0.0 0.0 // written in DEGREES
+:rotm rX00_5a -6 0.0 0.0 // written in DEGREES
+:rotm rX00_5b 6 0.0 0.0  // written in DEGREES
+:rotm rX00_9 -34 0.0 0.0 // written in DEGREES
+:rotm rX00_10 34 0.0 0.0 // written in DEGREES
 
 //Defining materials
 :MIXT_BY_NATOMS C4F10 11.2*kg/m3 2 C 4 F 10
@@ -30,7 +30,7 @@
 
 // Container vessel box
 
-:volu RichTbContainerVesselBox BOX 0.5*2000.0 0.5*4000.0 0.5*1200.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
+:volu RichTbContainerVesselBox BOX 0.5*4000.0 0.5*8000.0 0.5*2400.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
 :color RichTbContainerVesselBox 0.39 1.39 2.07
 :place RichTbContainerVesselBox 2 DetectorHall r000 0 0 0
 
@@ -43,12 +43,12 @@
 :solid Solid_MirrSphSeg1 SPHERE 5000 5002 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
 :volu MirrSphSeg1 Solid_MirrSphSeg1 G4_Al
 :color MirrSphSeg1 2.36 0.83 0.14
-:place MirrSphSeg1 3 RichTbContainerVesselBox rX00_3a 0 -1275.344727253162 -4535.648542508808 // written in MILLIMETERS
+:place MirrSphSeg1 3 RichTbContainerVesselBox rX00_3a 0 -1359.5441898256518 -4512.654215286126 // written in MILLIMETERS
 // Sphere (upper)
 :solid Solid_MirrSphSeg2 SPHERE 5000 5002 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
 :volu MirrSphSeg2 Solid_MirrSphSeg2 G4_Al
 :color MirrSphSeg2 2.36 0.83 0.14
-:place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 1279.7858571550973 -4535.648542508808 // written in MILLIMETERS
+:place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 1364.2785273152824 -4512.654215286126 // written in MILLIMETERS
 
 
 // Spherical mirror (Mirror2)
@@ -74,11 +74,11 @@
 //:place FlatMirror 5 RichTbContainerVesselBox rX00_5 0 -213.9598190334662 -5183.962074553003 // written in MILLIMETERS, 600 -5100
 // Replacement of the flat mirror with a box
 // Box (lower)
-:volu FlatMirror1 BOX 500 500 6 G4_Al
-:place FlatMirror1 5 RichTbContainerVesselBox rX00_5a 0 -800 -400 // scale parameters are in MILLIMETERS
+:volu FlatMirror1 BOX 0.5*2000 600 6 G4_Al
+:place FlatMirror1 5 RichTbContainerVesselBox rX00_5a 0 -850 -400 // scale parameters are in MILLIMETERS
 // Box (upper)
-:volu FlatMirror2 BOX 500 500 6 G4_Al
-:place FlatMirror2 6 RichTbContainerVesselBox rX00_5b 0 800 -400 // scale parameters are in MILLIMETERS
+:volu FlatMirror2 BOX 0.5*2000 600 6 G4_Al
+:place FlatMirror2 6 RichTbContainerVesselBox rX00_5b 0 850 -400 // scale parameters are in MILLIMETERS
 
 // Quartz radiator (Aerogel)
 
@@ -103,15 +103,15 @@
 
 // Place PMT window, 1mm thick, it covers +- 84 mm, pitch 30mm, 18mm one pmt
 // Box (lower)
-:volu pmt1 BOX 600*mm 600*mm 0.5*mm G4_SILICON_DIOXIDE
+:volu pmt1 BOX 0.5*2000*mm 0.5*2000*mm 0.5*mm G4_SILICON_DIOXIDE
 :color pmt1 0.9 0.9 0.   
 // <<<<<<<<<<<<<< ------------- PMT POSITION ----------------- >>>>>>>>>>>>
-:PLACE pmt1 9 RichTbContainerVesselBox rX00_9 0 -1500 200 // add 0.5mm shift due to window thickness
+:PLACE pmt1 9 RichTbContainerVesselBox rX00_9 0 -1800 500 // add 0.5mm shift due to window thickness
 // Box (upper)
-:volu pmt2 BOX 600*mm 600*mm 0.5*mm G4_SILICON_DIOXIDE
+:volu pmt2 BOX 0.5*2000*mm 0.5*2000*mm 0.5*mm G4_SILICON_DIOXIDE
 :color pmt2 0.9 0.9 0.   
 // <<<<<<<<<<<<<< ------------- PMT POSITION ----------------- >>>>>>>>>>>>
-:PLACE pmt2 10 RichTbContainerVesselBox rX00_10 0 1500 200 // add 0.5mm shift due to window thickness
+:PLACE pmt2 10 RichTbContainerVesselBox rX00_10 0 1800 500 // add 0.5mm shift due to window thickness
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // ----- OPTICAL PROPERTIES ----- //

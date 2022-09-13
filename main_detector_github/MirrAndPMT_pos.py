@@ -95,7 +95,7 @@ def change_PMT(D_phi, U_phi, y, z):# inputa angle, again for uppper and lower po
     replacetext(filename, input_listD + input_listU, output_listD + output_listU)
     
 
-def run_macro(D_phi1, U_phi1, D_phi3, U_phi3, D_phi, U_phi, z1 = 300, y3 = 800, z3 = 400, y = 1500, z = 200):
+def run_macro(D_phi1, U_phi1, D_phi3, U_phi3, D_phi, U_phi, z1 = 300, y3 = 850, z3 = 400, y = 1800, z = 500):
     change_Mirror1(D_phi1, U_phi1, z1)
     change_MirrorBOX(D_phi3, U_phi3, y3, z3)
     change_PMT(D_phi, U_phi, y, z)
@@ -111,5 +111,5 @@ def run_macro(D_phi1, U_phi1, D_phi3, U_phi3, D_phi, U_phi, z1 = 300, y3 = 800, 
 #  y position, default y = 1600> <optional z position, default z = 200># change_Mirror1(20, 20) 
 # # Interval Sph [25-20] and Flat [10-5]
 
-# run_macro(10, 10, 5, 5, 35, 35)
+# run_macro(11, 11, 6, 6, 34, 34)
 

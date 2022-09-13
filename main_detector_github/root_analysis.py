@@ -16,8 +16,8 @@ t = f.Get("t;1")
 
 nEntries = t.GetEntries()
 
-h1 = TH2F("Lower PMT detector", "xx:yy", 80, -400, 400, 80, -400, 400)
-h2 = TH2F("Upper PMT detector", "xx:yy", 80, -400, 400, 80, -400, 400)
+h1 = TH2F("Lower PMT detector", "xx:yy", 100, 0, 0, 100, 0, 0)
+h2 = TH2F("Upper PMT detector", "xx:yy", 100, 0, 0, 100, 0, 0)
 hM_D = TH2F("Lower Flat mirror", "xx:yy", 80, -400, 400, 80, -400, 400)
 hM_U = TH2F("Upper Flat mirror", "xx:yy", 80, -400, 400, 80, -400, 400)
 
@@ -25,7 +25,7 @@ for i in range(0, nEntries):
     a = t.GetEntry(i)
     # print(i, "- n_steps:", t.n)
     for j in range(0, t.n):
-        if ((t.vlm[j] == 7)): 
+        if ((t.vlm[j] == 7 and t.trk[j] == 1)): 
             h1.Fill(t.xx[j], t.yy[j])
         if ((t.vlm[j] == 10)):
             h2.Fill(t.xx[j], t.yy[j])

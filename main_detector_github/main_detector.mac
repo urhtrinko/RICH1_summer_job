@@ -19,32 +19,40 @@
 
 ########## SOURCE OF particleS #########
 
-/gps/particle proton
-/gps/number 1
+#Start prop
+#/gps/particle proton
+#/gps/pos/type Beam
+#/gps/pos/shape Circle
+#/gps/pos/centre 0.0 0.0 -5. m
+#/gps/pos/radius 0. mm
+#/gps/pos/sigma_r 5. mm
+#/gps/direction 0 0 1
+#End prop
+
+#/gps/particle proton
+#/gps/number 1
 
 # Point source
 #/gps/pos/centre 0 0 -600 mm #for some reason best position z = -601 mm
 
 # Plane source
-/gps/pos/type Plane
-/gps/pos/shape Square
-/gps/pos/centre 0 0 -600 mm
-/gps/pos/halfx 2. cm
-/gps/pos/halfy 2. cm
+#/gps/pos/type Plane
+#/gps/pos/shape Square
+#/gps/pos/centre 0 0 -600 mm
+#/gps/pos/halfx 2. cm
+#/gps/pos/halfy 2. cm
 
 # Spherical volume source
 #/gps/pos/type Volume
 #/gps/pos/shape Sphere
-#/gps/pos/centre 0 0 -1000 mm
-#/gps/pos/radius 100 mm
+#/gps/pos/centre 0 0 -601 mm
+#/gps/pos/radius 10 mm
 
-/gps/ang/type iso
-/gps/ang/mintheta -195 deg
-/gps/ang/maxtheta 195 deg
-/gps/ang/minphi 0 deg
-/gps/ang/maxphi 360 deg
+#/gps/ang/type iso
+#/gps/ang/mintheta -195 deg
+#/gps/ang/maxtheta 195 deg
 
-/gps/energy 180 GeV
+#/gps/energy 180 GeV
 
 # BEAM
 #/gps/particle proton
@@ -56,6 +64,7 @@
 #/gps/pos/sigma_r 5. mm
 
 #/gps/direction 0 0 1
+
 
 
 #########################
@@ -72,6 +81,6 @@
 
 # OUTPUT
 # saving data to a ROOT
-/analysis/setFileName root_files/iso_plane_cone.root
+#/analysis/setFileName root_files/iso_point_cone.root
 
-/run/beamOn 100
+#/run/beamOn 100

@@ -1,0 +1,16 @@
+/process/list Electromagnetic
+/process/list Optical
+
+########## SOURCE OF particleS #########
+
+#Start prop
+#and
+#Some test text
+#more
+#End prop
+
+#/gps/particle proton
+#/gps/number 1
+
+# Point source
+#/gps/pos/centre 0 0 -600 mm #for some reason best position z = -601 mm

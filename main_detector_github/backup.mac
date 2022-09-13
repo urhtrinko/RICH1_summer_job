@@ -1,0 +1,86 @@
+# geometry must be specified before /run/initialize
+/geometry/source geometries/main_detector3.tg
+
+#main_detector test for github!
+
+# based on Geant4 example OpNovice2 (EMZ: option4 of EM)
+/physics_lists/select QGSC_BERT_EMZ
+# cmd below becomes available only when the cmd above is used
+/physics_lists/factory/addOptical
+# turn off unnecessary output
+/process/optical/verbose 0
+# turn off scintillation
+/process/optical/processActivation Scintillation false
+
+/run/initialize
+
+/process/list Electromagnetic
+/process/list Optical
+
+########## SOURCE OF particleS #########
+
+#Start prop
+replacetxt
+s
+s
+date
+add
+above
+above
+#End prop
+
+#/gps/proton
+#/gps/number 1
+
+# Point source
+#/gps/pos/centre 0 0 -600 mm #for some reason best position z = -601 mm
+
+# Plane source
+#/gps/pos/type Plane
+#/gps/pos/shape Square
+#/gps/pos/centre 0 0 -600 mm
+#/gps/pos/halfx 2. cm
+#/gps/pos/halfy 2. cm
+
+# Spherical volume source
+#/gps/pos/type Volume
+#/gps/pos/shape Sphere
+#/gps/pos/centre 0 0 -601 mm
+#/gps/pos/radius 10 mm
+
+#/gps/ang/type iso
+#/gps/ang/mintheta -195 deg
+#/gps/ang/maxtheta 195 deg
+
+#/gps/energy 180 GeV
+
+# BEAM
+/gps/proton
+#/gps/energy 180 GeV
+/gps/pos/type Beam
+/gps/pos/shape Circle
+/gps/pos/centre 0.0 0.0 -5. m
+/gps/pos/radius 0. mm
+/gps/pos/sigma_r 5. mm
+
+/gps/direction 0 0 1
+
+
+
+#########################
+
+/vis/open HepRepFile
+/vis/drawVolume
+
+/vis/scene/add/axes
+/vis/scene/add/date
+/vis/scene/add/scale
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate 1
+/run/beamOn 10
+
+# OUTPUT
+# saving data to a ROOT
+#/analysis/setFileName root_files/iso_point_cone.root
+
+#/run/beamOn 100
