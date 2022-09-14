@@ -17,58 +17,80 @@
 /process/list Electromagnetic
 /process/list Optical
 
-########## SOURCE OF particleS #########
+########## SOURCES OF PARTICLES ########################################
+########################################################################
 
-#Start prop
+### SOURCE 1 ########################################################### 
+/gps/source/add 10.                                                     
+# there must be 7 lines of code between #Start point and #End point    
+# Start prop 1                                                           
 /gps/particle proton
-/gps/pos/centre 0 0 -600 mm
+/gps/pos/centre 0 0 -1000 mm
 /gps/ang/type iso
-/gps/ang/mintheta -195 deg
-/gps/ang/maxtheta 195 deg
-#
-#
-#End prop
+/gps/ang/mintheta -5 deg
+/gps/ang/maxtheta 5 deg
+/gps/ang/rot1 0 1 0
+/gps/ang/rot2 1 0 0
+# End prop 1                                                            
+# Start en 1                                                                                                     
+/gps/ene/type User
+/gps/hist/type energy
+/gps/hist/point 0. 0.
+/gps/hist/point 1.0 5.
+/gps/hist/point 2.0 2.
+/gps/hist/point 3.0 4.
+/gps/hist/point 4.0 6.
+/gps/hist/point 5.0 1.
+/gps/hist/point 6.0 7.
+/gps/hist/point 7.0 3.
+/gps/hist/point 8.0 11.
+/gps/hist/point 9.0 8.
+/gps/hist/point 10. 9.
+# End en 1                                                              
+########################################################################
 
-#/gps/particle proton
-#/gps/number 1
+### SOURCE 2 ########################################################### 
+/gps/source/add 5.                                                     
+# there must be 7 lines of code between #Start point and #End point    
+# Start prop 2                                                          
+/gps/particle pi+
+/gps/pos/centre 0 0 -1000 mm
+/gps/ang/type iso
+/gps/ang/mintheta -3 deg
+/gps/ang/maxtheta 3 deg
+/gps/ang/rot1 0 1 0
+/gps/ang/rot2 1 0 0
+# End prop 2                                                            
+# Start en 2                                                            
+/gps/ene/type Mono                                                    
+/gps/ene/mono 180 GeV                                                 
+# End en 2                                                            
+########################################################################
 
-# Point source
-#/gps/pos/centre 0 0 -600 mm #for some reason best position z = -601 mm
+### SOURCE 3 ########################################################### 
+/gps/source/add 1.                                                     
+# there must be 7 lines of code between #Start point and #End point    
+# Start prop 3                                                           
+/gps/particle pi-
+/gps/pos/centre 0 0 -1000 mm
+/gps/ang/type iso
+/gps/ang/mintheta -1 deg
+/gps/ang/maxtheta 1 deg
+/gps/ang/rot1 0 1 0
+/gps/ang/rot2 1 0 0
+# End prop 3                                                         
+# Start en 3                                                            
+/gps/ene/type Lin                                                     
+/gps/ene/min 10 GeV                                                            
+/gps/ene/max 180 GeV                                                   
+/gps/ene/gradient 1                                                   
+# End en 3
+########################################################################
 
-# Plane source
-#/gps/pos/type Plane
-#/gps/pos/shape Square
-#/gps/pos/centre 0 0 -600 mm
-#/gps/pos/halfx 2. cm
-#/gps/pos/halfy 2. cm
+########################################################################
+########################################################################
 
-# Spherical volume source
-#/gps/pos/type Volume
-#/gps/pos/shape Sphere
-#/gps/pos/centre 0 0 -601 mm
-#/gps/pos/radius 10 mm
-
-#/gps/ang/type iso
-#/gps/ang/mintheta -195 deg
-#/gps/ang/maxtheta 195 deg
-
-#/gps/energy 180 GeV
-
-# BEAM
-#/gps/particle proton
-#/gps/energy 180 GeV
-#/gps/pos/type Beam
-#/gps/pos/shape Circle
-#/gps/pos/centre 0.0 0.0 -5. m
-#/gps/pos/radius 0. mm
-#/gps/pos/sigma_r 5. mm
-
-#/gps/direction 0 0 1
-
-
-
-#########################
-
+##### VISUALIZATION ####################################################
 /vis/open HepRepFile
 /vis/drawVolume
 
@@ -78,9 +100,11 @@
 /vis/scene/add/trajectories
 /vis/scene/endOfEventAction accumulate 1
 /run/beamOn 10
+########################################################################
 
-# OUTPUT
+#### OUTPUT ############################################################
 # saving data to a ROOT
-#/analysis/setFileName root_files/iso_point_cone.root
+#/analysis/setFileName root_files/three_sources.root
 
 #/run/beamOn 100
+########################################################################

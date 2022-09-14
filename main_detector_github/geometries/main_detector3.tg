@@ -30,7 +30,7 @@
 
 // Container vessel box
 
-:volu RichTbContainerVesselBox BOX 0.5*4000.0 0.5*8000.0 0.5*2400.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
+:volu RichTbContainerVesselBox BOX 0.5*4000.0 0.5*8000.0 0.5*10000.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
 :color RichTbContainerVesselBox 0.39 1.39 2.07
 :place RichTbContainerVesselBox 2 DetectorHall r000 0 0 0
 
@@ -50,22 +50,6 @@
 :color MirrSphSeg2 2.36 0.83 0.14
 :place MirrSphSeg2 4 RichTbContainerVesselBox rX00_3b 0 1364.2785273152824 -4512.654215286126 // written in MILLIMETERS
 
-
-// Spherical mirror (Mirror2)
-//Sphere 
-//:solid RichTbR1SphFullSph SPHERE 3650.0 3651.5 -0.10699101038785304*rad 0.21398202077570608*rad 1.3224520211537645*rad 0.4966886112822641*rad
-// Box
-//:solid RichTbR1SphSubBox BOX 5000 5000 5000
-// 4 subtractions
-//:solid RichTbR1TSph subtraction RichTbR1SphFullSph RichTbR1SphSubBox rXYZ 0.0 5325.0 0.0
-//:solid RichTbR1BSph subtraction RichTbR1TSph RichTbR1SphSubBox rXYZ 0.0 -5325.0 0.0
-//:solid RichTbR1LSph subtraction RichTbR1BSph RichTbR1SphSubBox rXYZ 0.0 0.0 -5750.0
-//:solid RichTbR1RSph subtraction RichTbR1LSph RichTbR1SphSubBox rXYZ 0.0 0.0 5750.0
-// final creation and placement
-//:volu SphereMirror RichTbR1RSph G4_Al
-//:color SphereMirror 0.0 0.0 0.0
-//:place SphereMirror 4 DetectorHall r0YZ 0.0 932.897 -3118.286
-
 // Flat mirror (Mirror3)
 // Parameters of Sphere - PROBLEM: the beam is seamingly reflecting before reaching the mirror surface
 // x0 = 0, y0 = -63.95, z0 = -5183.96
@@ -82,7 +66,7 @@
 
 // Quartz radiator (Aerogel)
 
-:volu QuartzRadiator BOX 100 100 5 M_aerogel
+:volu QuartzRadiator BOX 100 100 15 M_aerogel
 :color QuartzRadiator 2.55 2.41 0.55
 :place QuartzRadiator 7 RichTbContainerVesselBox r000 0 0 -400 
 

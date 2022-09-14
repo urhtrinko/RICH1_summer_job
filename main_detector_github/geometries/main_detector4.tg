@@ -1,0 +1,110 @@
+// default unit of length is mm
+:volu WORLD BOX 50000*mm 50000*m 50000*m G4_Galactic
+:vis WORLD OFF
+
+//rotational matrix <name> <rotation around x,y,z>
+:rotm r000 0 0 0
+:rotm rX00_3a 11 0.0 0.0 // written in DEGREES
+:rotm rX00_3b -11 0.0 0.0 //written in DEGREES
+:rotm rXYZ 0 0 0 // 
+:rotm r0YZ 0 -1.5707963267948966*rad -0.15119109897972616*rad 
+:rotm rX00_5 -5.0 90.0 0.0 // written in DEGREES, DON'T CHANGE last two parameters
+:rotm rX00_5a -6 0.0 0.0 // written in DEGREES
+:rotm rX00_5b 6 0.0 0.0  // written in DEGREES
+:rotm rX00_9 -34 0.0 0.0 // written in DEGREES
+:rotm rX00_10 34 0.0 0.0 // written in DEGREES
+
+//Defining materials
+:MIXT_BY_NATOMS C4F10 11.2*kg/m3 2 C 4 F 10
+:MIXT_BY_VOLUME M_aerogel 0.1 4 G4_O 0.48 G4_H 0.01 G4_Si 0.45 G4_C 0.06
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// ---- Components of the detector ---- //
+
+// Detector hall
+:volu DetectorHall BOX 20000.0 20000.0 20000.0 G4_Galactic //G4_AIR 
+:color DetectorHall 0 0 0
+:place DetectorHall 1 WORLD r000 0 0 0
+:vis DetectorHall OFF
+
+// Container vessel box
+
+:volu RichTbContainerVesselBox BOX 0.5*4000.0 0.5*8000.0 0.5*10000.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
+:color RichTbContainerVesselBox 0.39 1.39 2.07
+:place RichTbContainerVesselBox 2 DetectorHall r000 0 0 0
+
+// Mirror sphere center in event point
+// (Upper)
+:solid Solid_MirrSphSeg1 SPHERE 4999.5 5000.5 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
+:volu MirrSphSeg1 Solid_MirrSphSeg1 G4_Al
+:color MirrSphSeg1 2.36 0.83 0.14
+:place MirrSphSeg1 3 RichTbContainerVesselBox r000 0 0 -4600 // written in MILLIMETERS
+// (Lower)
+:solid Solid_MirrSphSeg2 SPHERE 4999.5 5000.5 0.0*rad 6.283185307179586*rad 0.0*rad 0.08333333333333333*rad
+:volu MirrSphSeg2 Solid_MirrSphSeg2 G4_Al
+:color MirrSphSeg2 2.36 0.83 0.14
+:place MirrSphSeg2 4 RichTbContainerVesselBox r000 0 0 -4600 // written in MILLIMETERS
+
+// Flat mirror (Mirror3)
+// Box (lower)
+:volu FlatMirror1 BOX 0.5*2000 600 6 G4_Al
+:place FlatMirror1 5 RichTbContainerVesselBox rX00_5a 0 -500 -4500 // scale parameters are in MILLIMETERS
+// Box (upper)
+:volu FlatMirror2 BOX 0.5*2000 600 6 G4_Al
+:place FlatMirror2 6 RichTbContainerVesselBox rX00_5b 0 500 -4500 // scale parameters are in MILLIMETERS
+
+// Quartz radiator (Aerogel)
+
+:volu QuartzRadiator BOX 100 100 5 M_aerogel
+:color QuartzRadiator 2.55 2.41 0.55
+:place QuartzRadiator 7 RichTbContainerVesselBox r000 0 0 -400 
+
+
+// Place PMT window
+// Box (lower)
+:volu pmt1 BOX 0.5*2000*mm 0.5*2000*mm 0.5*mm G4_SILICON_DIOXIDE
+:color pmt1 0.9 0.9 0.   
+// <<<<<<<<<<<<<< ------------- PMT POSITION ----------------- >>>>>>>>>>>>
+:PLACE pmt1 9 RichTbContainerVesselBox rX00_9 0 -2500 1000 // add 0.5mm shift due to window thickness
+// Box (upper)
+:volu pmt2 BOX 0.5*2000*mm 0.5*2000*mm 0.5*mm G4_SILICON_DIOXIDE
+:color pmt2 0.9 0.9 0.   
+// <<<<<<<<<<<<<< ------------- PMT POSITION ----------------- >>>>>>>>>>>>
+:PLACE pmt2 10 RichTbContainerVesselBox rX00_10 0 2500 1000 // add 0.5mm shift due to window thickness
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// ----- OPTICAL PROPERTIES ----- //
+
+// optical properties of Air
+#include geometries/materials/getG4Air.tg
+
+// optical properties of Aerogel
+#include geometries/materials/M_AEROGEL_1.03_rayleigh.tg
+
+// optical properties of PMT window
+#include geometries/materials/G4_SILICON_DIOXIDE.tg // To have entries on PMT this must be uncommented
+
+// optical properties of C4F10
+#include geometries/materials/getC4F10.tg
+
+// optical properties of vacuum
+#include geometries/materials/getVacuum.tg
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// ----- Optical properties of surfaces ----- //
+
+// SURFACE PROPERTIES, used for reflection on the mirror
+#include  geometries/materials/SURFACE_mirrors.tg
+
+// Surface properties of PMT
+//#include geometries/materials/pmtWindowSurface.tg
+
+// Optical properties of the surface between Air an C4F10
+//#include geometries/materials/surfaceAir2C4F10.tg
+
+// Optical properties of the surface between C4F10 and aerogel
+//#include geometries/materials/surfaceC4F102Aerogel.tg
+
+// Surface properties between vacuum_air
+//#include vacuum_air.tg

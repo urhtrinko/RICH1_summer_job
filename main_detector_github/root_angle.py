@@ -60,9 +60,11 @@ def draw_histogram(filename, n_bins, start = 0, end = 0):
     c1.Update()
 
     input("Press ENTER to continue.")
-    # c1.SaveAs("graphics/ang_iso_sphere.jpg")
 
-    return [h_angle.GetMean(), h_angle.GetStdDev()]
+    # input("You want to SAVE this?")
+    # c1.SaveAs("graphics/three_sources_angle2.jpg")
 
-print(draw_histogram('iso_point_cone.root', 90, 0, 0))
+    # return [h_angle.GetMean(), h_angle.GetStdDev()]
+
+# print(draw_histogram('iso_point_cone.root', 90, 0, 0))
 
