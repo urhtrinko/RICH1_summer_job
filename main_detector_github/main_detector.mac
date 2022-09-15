@@ -1,3 +1,4 @@
+####### PROPERTIES OF THE SIMULATION ##################################
 # geometry must be specified before /run/initialize
 /geometry/source geometries/main_detector3.tg
 
@@ -16,6 +17,7 @@
 
 /process/list Electromagnetic
 /process/list Optical
+########################################################################
 
 ########## SOURCES OF PARTICLES ########################################
 ########################################################################
