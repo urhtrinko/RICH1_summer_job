@@ -25,10 +25,10 @@
 # there must be 7 lines of code between #Start point and #End point    
 # Start prop 1                                                           
 /gps/particle proton
-/gps/pos/centre 0 0 -1000 mm
+/gps/pos/centre 0 0 -1001 mm
 /gps/ang/type iso
-/gps/ang/mintheta -5 deg
-/gps/ang/maxtheta 5 deg
+/gps/ang/mintheta -4.8 deg
+/gps/ang/maxtheta 4.8 deg
 /gps/ang/rot1 0 1 0
 /gps/ang/rot2 1 0 0
 # End prop 1                                                            
@@ -56,8 +56,8 @@
 /gps/particle pi+
 /gps/pos/centre 0 0 -1000 mm
 /gps/ang/type iso
-/gps/ang/mintheta -3 deg
-/gps/ang/maxtheta 3 deg
+/gps/ang/mintheta -3.2 deg
+/gps/ang/maxtheta 3.2 deg
 /gps/ang/rot1 0 1 0
 /gps/ang/rot2 1 0 0
 # End prop 2                                                            
@@ -72,10 +72,10 @@
 # there must be 7 lines of code between #Start point and #End point    
 # Start prop 3                                                           
 /gps/particle pi-
-/gps/pos/centre 0 0 -1000 mm
+/gps/pos/centre 0 0 -99 mm
 /gps/ang/type iso
-/gps/ang/mintheta -1 deg
-/gps/ang/maxtheta 1 deg
+/gps/ang/mintheta -1.2 deg
+/gps/ang/maxtheta 1.2 deg
 /gps/ang/rot1 0 1 0
 /gps/ang/rot2 1 0 0
 # End prop 3                                                         

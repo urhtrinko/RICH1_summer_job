@@ -22,15 +22,15 @@ def sources(filename, properties):
 # Change values for a specific source
 # SOURCE 1
 keys1 = ["type", "particle", "point pos", "ang type", "mintheta", "maxtheta"]
-values1 = ["point", "proton", -1000, "iso", -5, 5]
+values1 = ["point", "proton", -1001, "iso", -4.8, 4.8]
 properties1 = dict(zip(keys1, values1))
 # SOURCE 2
 keys2 = ["type", "particle", "point pos", "ang type", "mintheta", "maxtheta"]
-values2 = ["point", "pi+", -1000, "iso", -3, 3]
+values2 = ["point", "pi+", -1000, "iso", -3.2, 3.2]
 properties2 = dict(zip(keys2, values2))
 # SOURCE 3
 keys3 = ["type", "particle", "point pos", "ang type", "mintheta", "maxtheta"]
-values3 = ["point", "pi-", -1000, "iso", -1, 1]
+values3 = ["point", "pi-", -99, "iso", -1.2, 1.2]
 properties3 = dict(zip(keys3, values3))
 
 properties = [properties1, properties2, properties3]
