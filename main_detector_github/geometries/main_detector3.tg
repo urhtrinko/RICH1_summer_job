@@ -30,7 +30,7 @@
 
 // Container vessel box
 
-:volu RichTbContainerVesselBox BOX 0.5*4000.0 0.5*8000.0 0.5*10000.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel.
+:volu RichTbContainerVesselBox BOX 0.5*4000.0 0.5*8000.0 0.5*10000.0 G4_Galactic //C4F10, for now vacuum so that the only Cherenkov radiator is the aerogel. If you want the vesselbox to contain C4F10 you must change G4_Galactic with C4F10 in this line. Nota that in this case the particle source MUST be outside of the container vessel box, otherwise the code dosen't work.
 :color RichTbContainerVesselBox 0.39 1.39 2.07
 :place RichTbContainerVesselBox 2 DetectorHall r000 0 0 0
 
